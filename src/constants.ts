@@ -1,0 +1,46 @@
+
+import { Suit, Rank, Card } from './types';
+
+export const SUITS: Suit[] = ['hearts', 'diamonds', 'clubs', 'spades'];
+export const RANKS: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+
+export const WILD_RANK: Rank = '6';
+
+export const createDeck = (): Card[] => {
+  const deck: Card[] = [];
+  SUITS.forEach(suit => {
+    RANKS.forEach((rank, index) => {
+      // Using different seeds for each rank to represent different "Eggy" characters
+      const avatarUrl = `https://picsum.photos/seed/eggy-${index + 1}/200/200`;
+      deck.push({
+        id: `${suit}-${rank}`,
+        suit,
+        rank,
+        avatarUrl,
+      });
+    });
+  });
+  return deck;
+};
+
+export const shuffle = (deck: Card[]): Card[] => {
+  const newDeck = [...deck];
+  for (let i = newDeck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]];
+  }
+  return newDeck;
+};
+
+export const isValidMove = (card: Card, topCard: Card, currentSuit: Suit | null): boolean => {
+  // Wild card '6' can always be played
+  if (card.rank === WILD_RANK) return true;
+
+  // If a suit was chosen by a wild card
+  if (currentSuit) {
+    return card.suit === currentSuit || card.rank === topCard.rank;
+  }
+
+  // Normal matching logic
+  return card.suit === topCard.suit || card.rank === topCard.rank;
+};
