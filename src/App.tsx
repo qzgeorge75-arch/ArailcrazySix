@@ -222,7 +222,7 @@ export default function App() {
   const topCard = gameState.discardPile[gameState.discardPile.length - 1];
 
   return (
-    <div className="min-h-screen bg-pink-500 text-white font-sans selection:bg-pink-400/30 flex flex-col overflow-y-auto">
+    <div className="min-h-screen bg-pink-100 text-slate-900 font-sans selection:bg-pink-200 flex flex-col overflow-y-auto">
       {/* Start Screen */}
       <AnimatePresence>
         {gameState.status === 'start_screen' && (
@@ -230,12 +230,12 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-pink-500 p-6"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-pink-100 p-6"
           >
             {/* Background Decorative Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-              <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-300 rounded-full blur-[120px]" />
-              <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-400 rounded-full blur-[120px]" />
+            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+              <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-200 rounded-full blur-[120px]" />
+              <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-300 rounded-full blur-[120px]" />
             </div>
 
             <motion.div 
@@ -262,40 +262,40 @@ export default function App() {
                 </div>
               </div>
 
-              <h1 className="text-5xl sm:text-7xl font-black mb-4 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
+              <h1 className="text-5xl sm:text-7xl font-black mb-4 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-pink-600 to-pink-900">
                 Arail疯狂6点
               </h1>
-              <p className="text-pink-100/60 text-lg sm:text-xl mb-12 max-w-md">
+              <p className="text-pink-800/60 text-lg sm:text-xl mb-12 max-w-md">
                 经典的 Crazy Eights 纸牌游戏，加入可爱的蛋仔角色，挑战 AI 赢取胜利！
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                 <button
                   onClick={initGame}
-                  className="px-12 py-4 bg-white text-pink-600 font-black rounded-2xl text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
+                  className="px-12 py-4 bg-pink-600 text-white font-black rounded-2xl text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
                 >
                   开始游戏
                 </button>
                 <button
                   onClick={() => setShowRules(true)}
-                  className="px-12 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl text-xl backdrop-blur-md border border-white/10 transition-all"
+                  className="px-12 py-4 bg-white/50 hover:bg-white/80 text-pink-900 font-bold rounded-2xl text-xl backdrop-blur-md border border-pink-200 transition-all"
                 >
                   游戏规则
                 </button>
               </div>
 
-              <div className="mt-16 flex items-center gap-6 opacity-40">
-                <div className="flex flex-col items-center">
+              <div className="mt-16 flex items-center gap-6 opacity-60">
+                <div className="flex flex-col items-center text-pink-900">
                   <span className="text-2xl font-bold">52</span>
                   <span className="text-[10px] uppercase tracking-widest">扑克牌</span>
                 </div>
-                <div className="w-px h-8 bg-white/20" />
-                <div className="flex flex-col items-center">
+                <div className="w-px h-8 bg-pink-300" />
+                <div className="flex flex-col items-center text-pink-900">
                   <span className="text-2xl font-bold">6</span>
                   <span className="text-[10px] uppercase tracking-widest">万能牌</span>
                 </div>
-                <div className="w-px h-8 bg-white/20" />
-                <div className="flex flex-col items-center">
+                <div className="w-px h-8 bg-pink-300" />
+                <div className="flex flex-col items-center text-pink-900">
                   <span className="text-2xl font-bold">∞</span>
                   <span className="text-[10px] uppercase tracking-widest">乐趣</span>
                 </div>
@@ -306,24 +306,24 @@ export default function App() {
       </AnimatePresence>
 
       {/* Header */}
-      <header className="p-4 flex justify-between items-center bg-black/20 backdrop-blur-sm border-b border-white/10">
+      <header className="p-4 flex justify-between items-center bg-white/30 backdrop-blur-sm border-b border-pink-200">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-pink-400 rounded-lg flex items-center justify-center shadow-lg shadow-pink-400/20">
-            <span className="text-2xl font-bold">6</span>
+          <div className="w-10 h-10 bg-pink-500 rounded-lg flex items-center justify-center shadow-lg shadow-pink-500/20">
+            <span className="text-2xl font-bold text-white">6</span>
           </div>
-          <h1 className="text-xl font-bold tracking-tight hidden sm:block">Arail疯狂6点</h1>
+          <h1 className="text-xl font-bold tracking-tight hidden sm:block text-pink-900">Arail疯狂6点</h1>
         </div>
         
         <div className="flex items-center gap-4">
           <button 
             onClick={() => setShowRules(!showRules)}
-            className="p-2 hover:bg-white/10 rounded-full transition-colors"
+            className="p-2 hover:bg-white/40 rounded-full transition-colors text-pink-900"
           >
             <Info size={20} />
           </button>
           <button 
             onClick={initGame}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all text-sm font-medium"
+            className="flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-full transition-all text-sm font-medium shadow-md"
           >
             <RotateCcw size={16} />
             <span>重新开始</span>
@@ -336,9 +336,9 @@ export default function App() {
         
         {/* AI Hand */}
         <div className="w-full flex flex-col items-center gap-2">
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest opacity-60">
+          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-pink-900/60">
             <span>AI 对手</span>
-            <span className="px-2 py-0.5 bg-white/10 rounded-full">{gameState.aiHand.length} 张牌</span>
+            <span className="px-2 py-0.5 bg-pink-200 rounded-full">{gameState.aiHand.length} 张牌</span>
           </div>
           <div className="flex -space-x-8 sm:-space-x-12 overflow-visible py-4">
             {gameState.aiHand.map((_, i) => (
@@ -352,7 +352,7 @@ export default function App() {
           {/* Draw Pile */}
           <div className="flex flex-col items-center gap-3">
             <div className="relative group" onClick={handleDrawCard}>
-              <div className="absolute -inset-1 bg-white/5 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+              <div className="absolute -inset-1 bg-pink-400/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
               <div className="relative">
                 {gameState.deck.length > 0 ? (
                   <>
@@ -362,13 +362,13 @@ export default function App() {
                     </div>
                   </>
                 ) : (
-                  <div className="w-16 h-24 sm:w-24 sm:h-36 border-2 border-dashed border-white/20 rounded-lg flex items-center justify-center">
-                    <Layers className="opacity-20" size={32} />
+                  <div className="w-16 h-24 sm:w-24 sm:h-36 border-2 border-dashed border-pink-300 rounded-lg flex items-center justify-center">
+                    <Layers className="text-pink-300" size={32} />
                   </div>
                 )}
               </div>
             </div>
-            <span className="text-[10px] uppercase tracking-widest opacity-40">摸牌堆</span>
+            <span className="text-[10px] uppercase tracking-widest text-pink-900/40">摸牌堆</span>
           </div>
 
           {/* Discard Pile */}
@@ -379,26 +379,26 @@ export default function App() {
                   <CardComponent 
                     key={topCard.id} 
                     card={topCard} 
-                    className="shadow-2xl shadow-black/40"
+                    className="shadow-2xl shadow-pink-900/10"
                   />
                 )}
               </AnimatePresence>
               {gameState.currentSuit && (
-                <div className="absolute -top-4 -right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl border-2 border-pink-400 animate-pulse">
+                <div className="absolute -top-4 -right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl border-2 border-pink-500 animate-pulse">
                   <span className={`text-xl ${gameState.currentSuit === 'hearts' || gameState.currentSuit === 'diamonds' ? 'text-red-600' : 'text-slate-900'}`}>
                     {gameState.currentSuit === 'hearts' ? '♥' : gameState.currentSuit === 'diamonds' ? '♦' : gameState.currentSuit === 'clubs' ? '♣' : '♠'}
                   </span>
                 </div>
               )}
             </div>
-            <span className="text-[10px] uppercase tracking-widest opacity-40">弃牌堆</span>
+            <span className="text-[10px] uppercase tracking-widest text-pink-900/40">弃牌堆</span>
           </div>
         </div>
 
         {/* Player Hand */}
         <div className="w-full flex flex-col items-center gap-2 sm:gap-4 mt-auto">
-          <div className="bg-black/30 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full backdrop-blur-md border border-white/10 shadow-xl mb-2">
-            <p className="text-xs sm:text-base font-medium text-pink-200">
+          <div className="bg-white/50 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full backdrop-blur-md border border-pink-200 shadow-lg mb-2">
+            <p className="text-xs sm:text-base font-medium text-pink-900">
               {message}
             </p>
           </div>
@@ -416,9 +416,9 @@ export default function App() {
             </div>
           </div>
           
-          <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest opacity-60 mb-2">
+          <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest text-pink-900/60 mb-2">
             <span>你的手牌</span>
-            <span className="px-2 py-0.5 bg-white/10 rounded-full">{gameState.playerHand.length} 张牌</span>
+            <span className="px-2 py-0.5 bg-pink-200 rounded-full">{gameState.playerHand.length} 张牌</span>
           </div>
         </div>
       </main>
