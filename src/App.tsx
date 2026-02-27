@@ -252,8 +252,8 @@ export default function App() {
                   className="w-24 h-36 bg-white rounded-xl border-2 border-slate-200 shadow-2xl flex flex-col items-center justify-center p-2 relative"
                 >
                   <div className="absolute top-2 left-2 text-red-600 font-bold text-xl">6</div>
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-slate-100 shadow-inner">
-                    <img src="https://picsum.photos/seed/eggy-6/200/200" alt="Eggy" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <div className="flex flex-col items-center justify-center">
+                    <span className="text-4xl font-black text-red-600">♥</span>
                   </div>
                   <div className="absolute bottom-2 right-2 text-red-600 font-bold text-xl rotate-180">6</div>
                 </motion.div>
@@ -266,7 +266,7 @@ export default function App() {
                 Arail疯狂6点
               </h1>
               <p className="text-pink-800/60 text-lg sm:text-xl mb-12 max-w-md">
-                经典的 Crazy Eights 纸牌游戏，加入可爱的蛋仔角色，挑战 AI 赢取胜利！
+                经典的Crazy Sixs纸牌游戏，匹配数字或者花色即可出牌，6是万能牌，先出完所有牌的人获胜
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -275,12 +275,6 @@ export default function App() {
                   className="px-12 py-4 bg-pink-600 text-white font-black rounded-2xl text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
                 >
                   开始游戏
-                </button>
-                <button
-                  onClick={() => setShowRules(true)}
-                  className="px-12 py-4 bg-white/50 hover:bg-white/80 text-pink-900 font-bold rounded-2xl text-xl backdrop-blur-md border border-pink-200 transition-all"
-                >
-                  游戏规则
                 </button>
               </div>
 
@@ -315,12 +309,6 @@ export default function App() {
         </div>
         
         <div className="flex items-center gap-4">
-          <button 
-            onClick={() => setShowRules(!showRules)}
-            className="p-2 hover:bg-white/40 rounded-full transition-colors text-pink-900"
-          >
-            <Info size={20} />
-          </button>
           <button 
             onClick={initGame}
             className="flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-full transition-all text-sm font-medium shadow-md"

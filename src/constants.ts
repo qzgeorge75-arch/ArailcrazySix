@@ -9,14 +9,11 @@ export const WILD_RANK: Rank = '6';
 export const createDeck = (): Card[] => {
   const deck: Card[] = [];
   SUITS.forEach(suit => {
-    RANKS.forEach((rank, index) => {
-      // Using different seeds for each rank to represent different "Eggy" characters
-      const avatarUrl = `https://picsum.photos/seed/eggy-${index + 1}/200/200`;
+    RANKS.forEach((rank) => {
       deck.push({
         id: `${suit}-${rank}`,
         suit,
         rank,
-        avatarUrl,
       });
     });
   });
