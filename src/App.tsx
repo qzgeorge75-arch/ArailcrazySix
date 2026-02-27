@@ -222,7 +222,7 @@ export default function App() {
   const topCard = gameState.discardPile[gameState.discardPile.length - 1];
 
   return (
-    <div className="min-h-screen bg-pink-100 text-slate-900 font-sans selection:bg-pink-200 flex flex-col overflow-y-auto">
+    <div className="h-screen bg-pink-100 text-slate-900 font-sans selection:bg-pink-200 flex flex-col overflow-hidden">
       {/* Start Screen */}
       <AnimatePresence>
         {gameState.status === 'start_screen' && (
@@ -332,23 +332,23 @@ export default function App() {
       </header>
 
       {/* Main Game Area */}
-      <main className="flex-1 relative flex flex-col items-center justify-between p-4 sm:p-8 max-w-6xl mx-auto w-full">
+      <main className="flex-1 relative flex flex-col items-center justify-between overflow-hidden p-2 sm:p-8 max-w-6xl mx-auto w-full">
         
         {/* AI Hand */}
-        <div className="w-full flex flex-col items-center gap-2">
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-pink-900/60">
+        <div className="w-full flex flex-col items-center gap-1 sm:gap-2 flex-none">
+          <div className="flex items-center gap-2 text-[10px] sm:text-xs uppercase tracking-widest text-pink-900/60">
             <span>AI 对手</span>
             <span className="px-2 py-0.5 bg-pink-200 rounded-full">{gameState.aiHand.length} 张牌</span>
           </div>
-          <div className="flex -space-x-8 sm:-space-x-12 overflow-visible py-4">
+          <div className="flex -space-x-10 sm:-space-x-12 overflow-visible py-2 max-w-full px-10">
             {gameState.aiHand.map((_, i) => (
-              <CardComponent key={`ai-${i}`} card={{} as any} isBack disabled className="scale-90 sm:scale-100" />
+              <CardComponent key={`ai-${i}`} card={{} as any} isBack disabled className="scale-75 sm:scale-100 origin-center" />
             ))}
           </div>
         </div>
 
         {/* Center Table */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 my-4">
+        <div className="flex-1 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-16 my-2 w-full">
           {/* Draw Pile */}
           <div className="flex flex-col items-center gap-3">
             <div className="relative group" onClick={handleDrawCard}>
@@ -396,21 +396,22 @@ export default function App() {
         </div>
 
         {/* Player Hand */}
-        <div className="w-full flex flex-col items-center gap-2 sm:gap-4 mt-auto">
-          <div className="bg-white/50 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full backdrop-blur-md border border-pink-200 shadow-lg mb-2">
-            <p className="text-xs sm:text-base font-medium text-pink-900">
+        <div className="w-full flex flex-col items-center gap-1 sm:gap-4 mt-auto flex-none">
+          <div className="bg-white/50 px-4 py-1 sm:px-6 sm:py-2 rounded-full backdrop-blur-md border border-pink-200 shadow-lg mb-1 sm:mb-2">
+            <p className="text-[10px] sm:text-base font-medium text-pink-900">
               {message}
             </p>
           </div>
 
-          <div className="w-full overflow-x-auto pb-4 px-4 flex justify-center no-scrollbar">
-            <div className="flex flex-nowrap sm:flex-wrap justify-center gap-2 sm:gap-4 min-w-max sm:min-w-0">
+          <div className="w-full overflow-x-auto pb-4 px-4 no-scrollbar">
+            <div className="flex justify-start sm:justify-center gap-2 sm:gap-4 min-w-max mx-auto">
               {gameState.playerHand.map((card) => (
                 <CardComponent 
                   key={card.id} 
                   card={card} 
                   onClick={() => handlePlayCard(card)}
                   disabled={gameState.turn !== 'player' || gameState.status !== 'playing'}
+                  className="scale-90 sm:scale-100 origin-bottom"
                 />
               ))}
             </div>
