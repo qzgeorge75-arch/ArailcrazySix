@@ -230,7 +230,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-pink-100 p-6"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-start sm:justify-center bg-pink-100 p-6 overflow-y-auto py-12 sm:py-6"
           >
             {/* Background Decorative Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
@@ -245,7 +245,7 @@ export default function App() {
               className="relative z-10 flex flex-col items-center max-w-2xl w-full text-center"
             >
               {/* Logo/Icon */}
-              <div className="mb-8 relative">
+              <div className="mb-6 sm:mb-8 relative scale-90 sm:scale-100">
                 <motion.div 
                   animate={{ rotate: [0, 5, -5, 0] }}
                   transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
@@ -262,14 +262,14 @@ export default function App() {
                 </div>
               </div>
 
-              <h1 className="text-5xl sm:text-7xl font-black mb-4 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-pink-600 to-pink-900">
+              <h1 className="text-4xl sm:text-7xl font-black mb-4 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-pink-600 to-pink-900 leading-tight">
                 Arail疯狂6点
               </h1>
-              <p className="text-pink-800/60 text-lg sm:text-xl mb-12 max-w-md">
+              <p className="text-pink-800/60 text-base sm:text-xl mb-8 sm:mb-12 max-w-md px-4">
                 经典的Crazy Sixs纸牌游戏，匹配数字或者花色即可出牌，6是万能牌，先出完所有牌的人获胜
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4">
                 <button
                   onClick={initGame}
                   className="px-12 py-4 bg-pink-600 text-white font-black rounded-2xl text-xl shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
@@ -278,7 +278,7 @@ export default function App() {
                 </button>
               </div>
 
-              <div className="mt-16 flex items-center gap-6 opacity-60">
+              <div className="mt-10 sm:mt-16 flex items-center gap-4 sm:gap-6 opacity-60">
                 <div className="flex flex-col items-center text-pink-900">
                   <span className="text-2xl font-bold">52</span>
                   <span className="text-[10px] uppercase tracking-widest">扑克牌</span>
